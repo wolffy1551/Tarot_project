@@ -79,20 +79,26 @@ deck= [
 		{ "name" : "Nine of Pentacles", "url" : "nine_of_pentacles", "image" : "images/pe09.jpg" , "desc" : "Gain. Practical wisdom limited to everyday affairs and the home. Stability. Solitude. Inheritance." , "rdesc" : "Loss of friendship or a material thing. Cancelled project. Beware of knavery." },
 		{ "name" : "Ten of Pentacles", "url" : "ten_of_pentacles", "image" : "images/pe10.jpg" , "desc" : "Wealth. Fulfillment of material fortune. Family matters. Inheritance. House." , "rdesc" : "Family misfortune. Loss of inheritance. Beware of risky projects." },
 	]
-class TarotHand():
-    number_card = input ("Hello my friend. How many cards would you like in your spread today? ")
-    card_amount = int(number_card)
 
-    def tarot_spread(card_amount):
+number_card = input ("Hello my friend. How many cards would you like in your spread today? ")
+card_amount = int(number_card)
+
+class TarotHand():
+
+    def tarot_spread(self,card_amount):
+        self.card_amount = card_amount
         spread = []
         num = random.randint(1,len(deck))
         card = deck[num]
+        #print()
+
         while len(spread) < int(card_amount):
-            spread.append(card)
-            del(card)
+            spread.append(deck[num])
+            del(deck[num])
         #if len(spread) == card_amount:
 
-        return spread
-        print(card)
+        return str(spread)
+        print(num)
+
 tarot = TarotHand()
-print(tarot)
+print(tarot.tarot_spread(card_amount))
