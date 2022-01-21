@@ -49,13 +49,17 @@ deck = [
 number_card = input("Hello my friend. How many cards would you like in your spread today? ")
 card_amount = int(number_card)
 spread = []
-num = random.randint(1, len(deck))
-card = deck[num]
+num = random.randint(1, len(deck)-1)
+card = deck[random.randint(1, len(deck)-1)]
 inverse = random.randint(-1, 0)
 defs = []
 names = []
+collective = {}
+
 
 class TarotHand():
+	def __init__(self):
+		pass
 
 	def tarot_spread(self, card_amount):
 		self.card_amount = card_amount
@@ -64,7 +68,7 @@ class TarotHand():
 
 		while len(spread) < int(card_amount):
 			spread.append(deck[num])
-			del (deck[num])
+			del deck[num]
 		for object in spread:
 			names.append(object["name"])
 			if object["name"] in names:
@@ -81,7 +85,21 @@ class TarotHand():
 				defs.append(object["Upright"])
 		return str(defs)
 
+	def printable(self, defs, names):
+		global collective
+
+		for name in names:
+			for things in defs:
+				if things not in collective:
+
+					collective[name] = things
+				if things in collective:
+					pass
+		print(defs)
+		return  collective
+
 
 tarot = TarotHand()
 print(tarot.tarot_spread(card_amount))
 print(tarot.tarot_visual(spread))
+print(tarot.printable(defs, names))
