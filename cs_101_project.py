@@ -74,7 +74,7 @@ class TarotHand:
             continue
         for object in spread:
             names.append(object["name"])
-        print(names)
+
         return str(names)
 
 
@@ -100,17 +100,18 @@ class TarotHand:
                 continue
 
 
-        print(defs)
+
         return str(defs)
 
     def printable(self, defs, names):
         global collective
-        #defs.reverse()
+
 
 
         collective = dict(zip(names, defs))
+        for name, reading in collective.items():
+            print("Your card " + name +" says your future holds: " + reading)
 
-        return str(collective)
 
 
 tarot = TarotHand()
