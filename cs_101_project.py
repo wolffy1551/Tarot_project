@@ -65,17 +65,23 @@ class TarotHand:
     def tarot_spread(self, card_amount, deck):
         self.card_amount = card_amount
         card = deck[random.randint(1, len(deck) - 1)]
-        # print()
-
+        new_deck = []
 
         while len(spread) < card_amount:
             spread.append(deck[random.randint(1, len(deck) - 1)])
 
             continue
-        for object in spread:
-            names.append(object["name"])
 
+        for object in spread:
+
+            if object not in spread:
+                names.append(object["name"])
+
+
+
+        print(spread)
         return str(names)
+
 
 
     def tarot_visual(self, spread):
@@ -85,17 +91,17 @@ class TarotHand:
         for object in spread:
             inverse = random.randint(-1, 0)
             if inverse == -1:
-                print("inverse")
+                print(str(object["name"]) + " inverse")
                 defs.append(object["Reversed"])
                 continue
 
 
             if inverse == 0:
-                print("upright")
+                print(str(object["name"]) + " upright")
                 defs.append(object["Upright"])
                 continue
             else:
-                print("upright")
+                print(str(object["name"]) + " upright")
                 defs.append(object["Upright"])
                 continue
 
