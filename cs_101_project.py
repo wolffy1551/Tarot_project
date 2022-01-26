@@ -49,8 +49,8 @@ deck = [
 number_card = input("Hello my friend. How many cards would you like in your spread today? ")
 card_amount = int(number_card)
 spread = []
-num = random.randint(1, len(deck) - 1)
-card = deck[num]
+num = random.randint(1, len(deck) - 1 )
+#card = deck[num]
 inverse = random.randint(-1, 0)
 defs = []
 names = []
@@ -62,20 +62,22 @@ class TarotHand:
         pass
 
     # this function is used to grab cards from the deck at random for the tarot spread
-    def tarot_spread(self, card_amount, deck):
+    def tarot_spread(self, card_amount, spread):
         self.card_amount = card_amount
-        card = deck[random.randint(1, len(deck) - 1)]
-        new_deck = []
-
+        #card = deck.object[random.randint(1, len(deck) - 1)]
+        global deck
+        
         while len(spread) < card_amount:
-            spread.append(deck[random.randint(1, len(deck) - 1)])
+            spread.append(deck[num])
+            if IndexError:
+                pass
+            for thing in spread:
+                if thing in deck:
+                    deck.remove(thing)
+
 
             continue
-
-        for object in spread:
-
-            if object not in spread:
-                names.append(object["name"])
+                #spread  (deck["name"[random.randint(1, len(deck) - 1)]])
 
 
 
@@ -89,6 +91,7 @@ class TarotHand:
 # this function needs to return inverse or upright for every value in spread.
 
         for object in spread:
+
             inverse = random.randint(-1, 0)
             if inverse == -1:
                 print(str(object["name"]) + " inverse")
@@ -121,6 +124,6 @@ class TarotHand:
 
 
 tarot = TarotHand()
-(tarot.tarot_spread(card_amount, deck))
+(tarot.tarot_spread(card_amount, spread))
 (tarot.tarot_visual(spread))
 print(tarot.printable(defs, names))
