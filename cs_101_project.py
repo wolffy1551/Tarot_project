@@ -81,7 +81,7 @@ class TarotHand:
 
 
 
-        print(spread)
+       # print(spread)
         return str(names)
 
 
@@ -96,12 +96,14 @@ class TarotHand:
             if inverse == -1:
                 print(str(object["name"]) + " inverse")
                 defs.append(object["Reversed"])
+                names.append(object["name"])
                 continue
 
 
             if inverse == 0:
                 print(str(object["name"]) + " upright")
                 defs.append(object["Upright"])
+                names.append(object["name"])
                 continue
             else:
                 print(str(object["name"]) + " upright")
@@ -114,8 +116,6 @@ class TarotHand:
 
     def printable(self, defs, names):
         global collective
-
-
 
         collective = dict(zip(names, defs))
         for name, reading in collective.items():
